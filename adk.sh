@@ -33,8 +33,8 @@ echo "Android Udh"
 npm install -g cordova
 echo "cordova udh"
 
-Y | cordova platform add android@12.*
-Y | cordova build android
+yes | cordova platform add android@12.*
+yes | cordova build android
 
 mv /workspaces/jpp1/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspaces/jpp1/
 
