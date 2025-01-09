@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ilmu Pendidikan</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/quizes.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,700;0,800;0,900;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style></style>
+  <body>
+    <div
+      class="container-fluid d-flex align-items-center justify-content-center"
+    >
+      <div class="wrapper mt-2">
+        <div
+          class="quiz-title mt-2 d-flex flex-row w-100 justify-content-between"
+        >
+          <h4>Quizs 3: Hakikat Penelitian Tindakan Kelas</h4>
+          <h4 class="Waktu"></h4>
+        </div>
+        <div id="progress-bar-container" class="mt-2">
+          <div class="progress-bar-title">
+            <div class="progress-bar-title-text">Kemajuan Quiz:</div>
+            <div class="progress-bar-title-text">
+              Pertanyaan <span class="current-question">1</span> dari
+              <span id="totalQuestion"></span>
+            </div>
+          </div>
+          <div id="progress-bar" class="progress mt-1">
+            <div
+              class="progress-bar my-bar"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-question-number mt-3">
+            Pertanyaan <span class="current-question">1</span>
+          </div>
+          <div class="question-text-wrapper">
+            <h5 id="question-text"></h5>
+          </div>
+        </div>
+        <div class="options d-grid">
+          <button
+            class="btn btn-outline-secondary option"
+            value="0"
+            id="option0"
+          ></button>
+          <button
+            class="btn btn-outline-secondary option"
+            value="1"
+            id="option1"
+          ></button>
+          <button
+            class="btn btn-outline-secondary option"
+            value="2"
+            id="option2"
+          ></button>
+          <button
+            class="btn btn-outline-secondary option"
+            value="3"
+            id="option3"
+          ></button>
+        </div>
+        <div class="buttons-wrapper mt-1">
+          <button id="prev" class="btn btn-secondary">Sebelumnya</button>
+          <button id="next" class="btn btn-info">Selanjutnya</button>
+          <button id="finish" class="btn btn-warning">Selesai</button>
+        </div>
+      </div>
+      <div class="wrapper-2 mt-2">
+        <h3>🎉 Selamat telah menyelesaikan kuis.</h3>
+        <div class="message">
+          Kamu telah menyelesaikan kuis, tekan tombol selesai untuk kembali ke
+          halaman utama.
+        </div>
+
+        <div class="rating mt-4"></div>
+        <div class="mt-2">Skor kamu adalah <span id="infoSkor"></span>/100</div>
+        <a href="./quiz.html" class="btn btn-success mt-2">Selesai</a>
+      </div>
+    </div>
+  </body>
+  <script>
+    var questionData = {
+      questions: {
+        0: "Konsep Penelitian Tindakan pertama kali dikembangkan oleh?",
+        1: "Penelitian Tindakan (Action Research) pertama kali diterapkan pada situasi berikut, kecuali?",
+        2: "Menurut Kurt Lewin, apa yang menjadi penghambat perkembangan Penelitian Tindakan?",
+        3: "Pada tahun berapa John Elliot dan Clem Adelman mengembangkan Penelitian Tindakan untuk membantu guru di Inggris?",
+        4: "Di manakah pertama kali Penelitian Tindakan disosialisasikan di Indonesia?",
+      },
+      options: {
+        0: [
+          "a. Kemmis dan Taggart",
+          "b. John Elliot",
+          "c. Clem Adelman",
+          "d. Kurt Lewin",
+        ],
+        1: [
+          "a. Situasi rumah tangga",
+          "b. Situasi kelas",
+          "c. Situasi perguruan tinggi",
+          "d. Situasi penyebab prasangka terhadap kenakalan anak-anak",
+        ],
+        2: [
+          "a. Kurangnya dukungan dari pemerintah",
+          "b. Kurangnya sumber daya",
+          "c. Kelompok pembuat kebijakan dan kelompok masyarakat",
+          "d. Kurangnya penelitian ilmiah yang mendalam",
+        ],
+        3: ["a. 1976-1978", "b. 1988-1989", "c. 1994-1995", "d. 1999-2000"],
+        4: [
+          "a. Institut Keguruan dan Ilmu Pendidikan (IKIP) Yogyakarta",
+          "b. Universitas Negeri Jakarta",
+          "c. Universitas Pendidikan Indonesia",
+          "d. Universitas Gadjah Mada",
+        ],
+      },
+      answers: {
+        0: 3,
+        1: 2,
+        2: 2,
+        3: 0,
+        4: 0,
+      },
+    };
+  </script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.js"></script>
+  <script>
+    function calc_score(user_answers) {
+      let score = 0;
+      for (let i = 0; i < user_answers.length; i++) {
+        if (user_answers[i] == questionData.answers[i]) {
+          score++;
+        }
+      }
+      return Math.floor((score / user_answers.length) * 100);
+    }
+
+    $(document).ready(function () {
+      var current_index = 0;
+      var total_question = Object.keys(questionData.questions).length;
+      console.log(total_question);
+      var current_check = -1;
+      var user_answers = [];
+      for (let i = 0; i < total_question; i++) {
+        user_answers.push(-1);
+      }
+      // place the first question to the page
+      $("#question-text").text(questionData.questions[current_index]);
+      $("#option0").text(questionData.options[current_index][0]);
+      $("#option1").text(questionData.options[current_index][1]);
+      $("#option2").text(questionData.options[current_index][2]);
+      $("#option3").text(questionData.options[current_index][3]);
+      $("#totalQuestion").text(total_question);
+
+      $(".option").on("click", function () {
+        user_answers[current_index] = $(this).val();
+        $(".option").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      $("#next").on("click", function () {
+        $(".option").removeClass("active");
+        $("#prev").css("display", "block");
+        current_index++;
+        if (current_index == total_question - 1) {
+          $("#next").css("display", "none");
+          $("#finish").css("display", "block");
+        }
+        $("#question-text").text(questionData.questions[current_index]);
+        $("#option0").text(questionData.options[current_index][0]);
+        $("#option1").text(questionData.options[current_index][1]);
+        $("#option2").text(questionData.options[current_index][2]);
+        $("#option3").text(questionData.options[current_index][3]);
+        $(".current-question").text(current_index + 1);
+
+        if (user_answers[current_index] != -1) {
+          $(".option").eq(user_answers[current_index]).addClass("active");
+        } else {
+          $(".option").removeClass("active");
+        }
+        // make progress bar arial-valuenow increase
+        let progress = ((current_index + 1) / total_question) * 100;
+        $(".my-bar").css("width", progress + "%");
+      });
+
+      $("#prev").on("click", function () {
+        $(".option").removeClass("active");
+        $("#next").css("display", "block");
+        $("#finish").css("display", "none");
+        current_index--;
+        if (current_index == 0) {
+          $("#prev").css("display", "none");
+        }
+        $("#question-text").text(questionData.questions[current_index]);
+        $("#option0").text(questionData.options[current_index][0]);
+        $("#option1").text(questionData.options[current_index][1]);
+        $("#option2").text(questionData.options[current_index][2]);
+        $("#option3").text(questionData.options[current_index][3]);
+        $(".current-question").text(current_index + 1);
+
+        if (user_answers[current_index] != -1) {
+          $(".option").eq(user_answers[current_index]).addClass("active");
+        } else {
+          $(".option").removeClass("active");
+        }
+        let progress = ((current_index + 1) / total_question) * 100;
+        $(".my-bar").css("width", progress + "%");
+      });
+
+      $("#finish").on("click", function () {
+        $(".wrapper").css("display", "none");
+        $(".wrapper-2").css("display", "flex");
+        let score = calc_score(user_answers);
+        $(".rating").text(score + "%");
+        const ratings = document.querySelectorAll(".rating");
+        $("#infoSkor").text(score);
+
+        // Iterate over all rating items
+        ratings.forEach((rating) => {
+          // Get content and get score as an int
+          const ratingContent = rating.innerHTML;
+          const ratingScore = parseInt(ratingContent, 10);
+
+          // Define if the score is good, meh or bad according to its value
+          const scoreClass =
+            ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+
+          // Add score class to the rating
+          rating.classList.add(scoreClass);
+
+          // After adding the class, get its color
+          const ratingColor = window.getComputedStyle(rating).backgroundColor;
+
+          // Define the background gradient according to the score and color
+          const gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
+
+          // Set the gradient as the rating background
+          rating.setAttribute("style", gradient);
+
+          // Wrap the content in a tag to show it above the pseudo element that masks the bar
+          rating.innerHTML = `<span>${ratingScore} ${
+            ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+          }</span>`;
+        });
+      });
+      var time = 1800;
+      var timer = setInterval(function () {
+        time--;
+        var minutes = Math.floor(time / 60);
+        var seconds = time - minutes * 60;
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        $(".Waktu").html(minutes + ":" + seconds);
+        if (time == 0) {
+          clearInterval(timer);
+          $(".wrapper").css("display", "none");
+          $(".wrapper-2").css("display", "flex");
+          let score = calc_score(user_answers);
+          $(".rating").text(score + "%");
+          const ratings = document.querySelectorAll(".rating");
+          $("#infoSkor").text(score);
+
+          // Iterate over all rating items
+          ratings.forEach((rating) => {
+            // Get content and get score as an int
+            const ratingContent = rating.innerHTML;
+            const ratingScore = parseInt(ratingContent, 10);
+
+            // Define if the score is good, meh or bad according to its value
+            const scoreClass =
+              ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+
+            // Add score class to the rating
+            rating.classList.add(scoreClass);
+
+            // After adding the class, get its color
+            const ratingColor = window.getComputedStyle(rating).backgroundColor;
+
+            // Define the background gradient according to the score and color
+            const gradient = `background: conic-gradient(${ratingColor} ${ratingScore}%, transparent 0 100%)`;
+
+            // Set the gradient as the rating background
+            rating.setAttribute("style", gradient);
+
+            // Wrap the content in a tag to show it above the pseudo element that masks the bar
+            rating.innerHTML = `<span>${ratingScore} ${
+              ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+            }</span>`;
+          });
+        }
+      }, 1000);
+    });
+  </script>
+  <script src="./js/block_back.js"></script>
+</html>

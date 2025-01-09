@@ -1,0 +1,84 @@
+.content{
+    background-image: url('../assets/petunjuk/board-background.png');
+    background-size: cover;
+    width: 50%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+
+.wrapper{
+    background-image: url(../assets/petunjuk/base-background.png)
+}
+
+.waviy {
+    position: relative;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+    font-size: clamp(1.5rem, 1vw, 5rem);
+  }
+.waviy span {
+    font-family: 'Alfa Slab One', cursive;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    animation: waviy 1s infinite;
+    animation-delay: calc(.1s * var(--i));
+
+}
+@keyframes waviy {
+    0%,40%,100% {
+        transform: translateY(0)
+    }
+    20% {
+        transform: translateY(-.125rem)
+    }
+}
+
+
+
+.waviy2 {
+    position: relative;
+  }
+  .waviy2 span {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    animation: flip 2s infinite;
+    animation-delay: calc(.2s * var(--i))
+  }
+  @keyframes flip {
+    0%,80% {
+      transform: rotateY(360deg) 
+    }
+  }
+
+p{
+    font-size: .75rem;
+    text-align: center;
+}
+.centre{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    justify-content: center;
+}
+
+h3{
+    font-size: clamp(1rem, 1vw, 2rem);
+    font-family: 'Alfa Slab One', cursive;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 7%;
+}

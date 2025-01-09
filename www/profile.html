@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .background-top {
+            background-image: url(./assets/carousel/carousel1.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            width: 100%;
+            position: relative;
+        }
+
+        .content {
+            background: #f8f9fa;
+            border-radius: 15px 15px 0 0;
+            margin-top: -80px;
+            padding: 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            flex: 1;
+        }
+
+
+
+        .profile-details {
+            margin-top: 150px;
+            /* Adjust for profile image overlap */
+            text-align: center;
+        }
+
+        .profile-details h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .profile-details p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .contributors {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contributor-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contributor-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile-bg {
+            width: 140px;
+            height: 140px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-top"></div>
+
+    <div class="content">
+        <!-- Profile Section -->
+       <div class="profile-menu text-center">
+           <div class="profile-bg">
+               <img src="./assets/logo-univ.png" alt="Profile Picture" class="profile-img">
+           </div>
+           <div class="profile-details">
+               <h4>Dr. Mawardi, S.S.I., M.Pd</h4>
+               <p>Dosen Pengampu</p>
+           </div>
+       </div>
+
+        <!-- Contributors Section -->
+        <div class="contributors mb-5">
+            <h5>Kontributor</h5>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Aida Nabila</h6>
+                    <p class="text-muted m-0">2186206105</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Aira Apriliani</h6>
+                    <p class="text-muted m-0">2186206147</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Ani Nur Anggraeni</h6>
+                    <p class="text-muted m-0">2186206122</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Angele Melyana</h6>
+                    <p class="text-muted m-0">2186206172</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Azzahra Dhiya Afiyah</h6>
+                    <p class="text-muted m-0">2186206112</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Fathiya Cahaya Qurani</h6>
+                    <p class="text-muted m-0">2186206111</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Laura Amalya Safitri</h6>
+                    <p class="text-muted m-0">2186206146</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Nafisah Nur Rohmah</h6>
+                    <p class="text-muted m-0">2186206161</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Nanda Citra Kumarani</h6>
+                    <p class="text-muted m-0">2186206109</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Nur Aliza Sefani</h6>
+                    <p class="text-muted m-0">2186206113</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Rahma Rizkiya Wahyu</h6>
+                    <p class="text-muted m-0">2186206167</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Rangi Rizky Setiawan</h6>
+                    <p class="text-muted m-0">2186206071</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/man.png" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Riski Pratama</h6>
+                    <p class="text-muted m-0">2186206050</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Renny Agustin</h6>
+                    <p class="text-muted m-0">2186206143</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Sri Wulandari</h6>
+                    <p class="text-muted m-0">2186206156</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Syafani Mayang Sepeti</h6>
+                    <p class="text-muted m-0">2186206164</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Tania Julianis</h6>
+                    <p class="text-muted m-0">2186206138</p>
+                </div>
+            </div>
+            <div class="contributor-item">
+                <img src="./assets/profile/woman.jpg" alt="Contributor">
+                <div>
+                    <h6 class="m-0">Siti Azkiatul Ummah</h6>
+                    <p class="text-muted m-0">2186206205</p>
+                </div>
+            </div>
+
+            <!-- Add more contributor items as needed -->
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="./home.html" class="navbar-item">
+            <img src="./assets/icons/home.png" alt="Home">
+        </a>
+        <a href="./materi.html" class="navbar-item">
+            <img src="./assets/icons/book-alt.png" alt="Materi">
+        </a>
+        <a href="./quiz.html" class="navbar-item">
+            <img src="./assets/icons/memo-circle-check.png" alt="Tasks">
+        </a>
+        <a href="./profile.html" class="navbar-item">
+            <img src="./assets/icons/user.png" alt="Profile">
+        </a>
+    </div>
+</body>
+
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a href="./home.html" class="navbar-item">
+        <img src="./assets/icons/home.png" alt="Home">
+    </a>
+    <a href="./materi.html" class="navbar-item">
+        <img src="./assets/icons/book-alt.png" alt="Materi">
+    </a>
+    <a href="./quiz.html" class="navbar-item">
+        <img src="./assets/icons/memo-circle-check.png" alt="Tasks">
+    </a>
+    <a href="./profile.html" class="navbar-item">
+        <img src="./assets/icons/user.png" alt="Profile">
+    </a>
+</div>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

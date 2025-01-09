@@ -1,0 +1,75 @@
+.content{
+    background-image: url('../assets/petunjuk/board-background.png');
+    background-size: cover;
+    width: 50%;
+    position: relative;
+
+    /* justify-content: space-evenly; */
+}
+
+.wrapper{
+    background-image: url(../assets/petunjuk/base-background.png)
+}
+
+.inner-content{
+    width: 90%;
+    height: 60%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+}
+
+.inner-content::-webkit-scrollbar {
+    width: 3px;
+}
+
+.inner-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.inner-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.inner-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+h3{
+    position: absolute;
+    top: 5%;
+    color: white;
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 1.7rem;
+}
+
+.inner-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: .2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.inner-wrapper > a{
+    width: 40%;
+    margin-right: 0rem;
+    text-decoration: underline;
+    color: #fff;
+    font-size: clamp(.8rem, 1vw, 1.5rem);
+    font-weight: bold;
+    padding: .5rem;
+    border-radius: 5px;
+    background-color: rgb(129, 4, 4);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.inner-wrapper > a:hover{
+    scale: 1.1;
+}
